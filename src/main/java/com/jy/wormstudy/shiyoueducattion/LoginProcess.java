@@ -2,9 +2,10 @@ package com.jy.wormstudy.shiyoueducattion;
 
 
 import com.jy.util.common.HashUtil;
-import com.jy.util.common.JsonUtil;
 import com.jy.util.http.HttpResponseEntity;
 import com.jy.util.http.RequestUtil;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,6 +46,18 @@ public class LoginProcess {
         payload.put("into", 0);
 
         HttpResponseEntity httpResponseEntity = RequestUtil.post(uri.toString(), headers, payload);
+        for (Header header: httpResponseEntity.getHeaders()) {
+            if(header.getName().equalsIgnoreCase("Set-Cookie")) {
+                for (HeaderElement element: header.getElements()) {
+                    if("UC00OOIIll11".equalsIgnoreCase(element.getName())) {
+                        authenticationHolder.setUC00OOIIll11(element.getValue());
+                        break;
+                    }
+                }
+            }
+        }
+
+
         logger.info("login response code: {}", httpResponseEntity.getCode());
         logger.info("login response body: {}", new String(httpResponseEntity.getContent()));
     }

@@ -8,6 +8,8 @@ public class AuthenticationHolder {
 
     private String validateCode;
 
+    private String UC00OOIIll11;
+
     public String getJsessionid() {
         return jsessionid;
     }
@@ -32,12 +34,21 @@ public class AuthenticationHolder {
         this.validateCode = validateCode;
     }
 
+    public String getUC00OOIIll11() {
+        return UC00OOIIll11;
+    }
+
+    public void setUC00OOIIll11(String UC00OOIIll11) {
+        this.UC00OOIIll11 = UC00OOIIll11;
+    }
+
     @Override
     public String toString() {
         return "AuthenticationHolder{" +
                 "jsessionid='" + jsessionid + '\'' +
                 ", sessionId='" + sessionId + '\'' +
                 ", validateCode='" + validateCode + '\'' +
+                ", UC00OOIIll11='" + UC00OOIIll11 + '\'' +
                 '}';
     }
 }
