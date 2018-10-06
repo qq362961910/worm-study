@@ -30,7 +30,7 @@ public class LoginProcess {
         headers.put("Accept-Encoding", "gzip, deflate");
         headers.put("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8");
         headers.put("Content-Type", "application/x-www-form-urlencoded;");
-        headers.put("Cookie", "JSESSIONID=" + authenticationHolder.getJsessionid() + "; Path=/center");
+        headers.put("Cookie", "JSESSIONID=" + authenticationHolder.getCenterSessionId());
         headers.put("Host", uri.getHost());
         headers.put("Origin", "http://www.cupde.cn");
         headers.put("Connection", "close");

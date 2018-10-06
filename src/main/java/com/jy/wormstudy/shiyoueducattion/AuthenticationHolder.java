@@ -2,7 +2,9 @@ package com.jy.wormstudy.shiyoueducattion;
 
 public class AuthenticationHolder {
 
-    private String jsessionid;
+    private String centerSessionId;
+
+    private String workspaceSessionId;
 
     private String sessionId;
 
@@ -10,12 +12,20 @@ public class AuthenticationHolder {
 
     private String UC00OOIIll11;
 
-    public String getJsessionid() {
-        return jsessionid;
+    public String getCenterSessionId() {
+        return centerSessionId;
     }
 
-    public void setJsessionid(String jsessionid) {
-        this.jsessionid = jsessionid;
+    public void setCenterSessionId(String centerSessionId) {
+        this.centerSessionId = centerSessionId;
+    }
+
+    public String getWorkspaceSessionId() {
+        return workspaceSessionId;
+    }
+
+    public void setWorkspaceSessionId(String workspaceSessionId) {
+        this.workspaceSessionId = workspaceSessionId;
     }
 
     public String getSessionId() {
@@ -45,7 +55,8 @@ public class AuthenticationHolder {
     @Override
     public String toString() {
         return "AuthenticationHolder{" +
-                "jsessionid='" + jsessionid + '\'' +
+                "centerSessionId='" + centerSessionId + '\'' +
+                ", workspaceSessionId='" + workspaceSessionId + '\'' +
                 ", sessionId='" + sessionId + '\'' +
                 ", validateCode='" + validateCode + '\'' +
                 ", UC00OOIIll11='" + UC00OOIIll11 + '\'' +

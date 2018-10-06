@@ -38,7 +38,7 @@ public class ValidCodeProcess {
         for(String str: cookieStrs) {
             String[] entry = str.split("=");
             if("JSESSIONID".equals(entry[0]) && entry.length > 1) {
-                authenticationHolder.setJsessionid(entry[1]);
+                authenticationHolder.setCenterSessionId(entry[1]);
             }
         }
         //save image to tmp

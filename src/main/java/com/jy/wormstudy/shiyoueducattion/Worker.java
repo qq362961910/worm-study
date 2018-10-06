@@ -10,9 +10,9 @@ public class Worker {
 
         AuthenticationHolder authenticationHolder = new AuthenticationHolder();
 
-        String validCodeUrl = "http://www.cupde.cn/center/sso/authimg?0.00405729292544288";
+        String validCodeUri = "http://www.cupde.cn/center/sso/authimg?0.00405729292544288";
         ValidCodeHelper helper = new ValidCodeHelper("D:\\dev\\workspace\\idea\\tesseract\\tessdata");
-        ValidCodeProcess validCodeProcess = new ValidCodeProcess(helper, validCodeUrl);
+        ValidCodeProcess validCodeProcess = new ValidCodeProcess(helper, validCodeUri);
         validCodeProcess.requestValidateCode(authenticationHolder);
 
         String username = "";
@@ -21,5 +21,8 @@ public class Worker {
         LoginProcess loginProcess = new LoginProcess(username, password, loginUri);
         loginProcess.login(authenticationHolder);
 
+        URI indexUri = URI.create("http://www.cupde.cn/workspace/sso/center/ssoLoginByUserCenter_login.action");
+        IndexPageProcess indexPageProcess = new IndexPageProcess(indexUri);
+        indexPageProcess.process(authenticationHolder);
     }
 }
