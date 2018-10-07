@@ -1,5 +1,8 @@
 package com.jy.wormstudy.shiyoueducattion.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
 
     private String id;
@@ -11,6 +14,8 @@ public class Student {
     private String category;
 
     private String studentImage;
+
+    private List<Course> toLearningCourseList = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -52,6 +57,14 @@ public class Student {
         this.studentImage = studentImage;
     }
 
+    public List<Course> getToLearningCourseList() {
+        return toLearningCourseList;
+    }
+
+    public void setToLearningCourseList(List<Course> toLearningCourseList) {
+        this.toLearningCourseList = toLearningCourseList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -60,6 +73,7 @@ public class Student {
                 ", major='" + major + '\'' +
                 ", category='" + category + '\'' +
                 ", studentImage='" + studentImage + '\'' +
+                ", toLearningCourseList=" + toLearningCourseList +
                 '}';
     }
 }

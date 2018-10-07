@@ -41,6 +41,10 @@ public class Worker {
         UserInfoProcess userInfoProcess = new UserInfoProcess(userInfoProcessUri);
         userInfoProcess.process(authenticationHolder);
 
+        URI toLearnCourseProcessUri = URI.create("http://www.cupde.cn/entity/workspaceStudent/student_toLearningCoursesSNS.action");
+        ToLearnCourseProcess toLearnCourseProcess = new ToLearnCourseProcess(toLearnCourseProcessUri);
+        toLearnCourseProcess.process(authenticationHolder);
+
         System.out.println(authenticationHolder.getStudent());
     }
 }
