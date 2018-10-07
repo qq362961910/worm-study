@@ -2,6 +2,8 @@ package com.jy.wormstudy.shiyoueducattion;
 
 public class AuthenticationHolder {
 
+    private String rootSessionId;
+
     private String centerSessionId;
 
     private String workspaceSessionId;
@@ -11,6 +13,14 @@ public class AuthenticationHolder {
     private String validateCode;
 
     private String UC00OOIIll11;
+
+    public String getRootSessionId() {
+        return rootSessionId;
+    }
+
+    public void setRootSessionId(String rootSessionId) {
+        this.rootSessionId = rootSessionId;
+    }
 
     public String getCenterSessionId() {
         return centerSessionId;
@@ -55,7 +65,8 @@ public class AuthenticationHolder {
     @Override
     public String toString() {
         return "AuthenticationHolder{" +
-                "centerSessionId='" + centerSessionId + '\'' +
+                "rootSessionId='" + rootSessionId + '\'' +
+                ", centerSessionId='" + centerSessionId + '\'' +
                 ", workspaceSessionId='" + workspaceSessionId + '\'' +
                 ", sessionId='" + sessionId + '\'' +
                 ", validateCode='" + validateCode + '\'' +

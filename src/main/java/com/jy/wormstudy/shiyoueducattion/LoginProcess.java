@@ -46,21 +46,18 @@ public class LoginProcess {
         payload.put("into", 0);
 
         HttpResponseEntity httpResponseEntity = RequestUtil.post(uri.toString(), headers, payload);
+        logger.info("login response code: {}", httpResponseEntity.getCode());
         for (Header header: httpResponseEntity.getHeaders()) {
             if(header.getName().equalsIgnoreCase("Set-Cookie")) {
+                logger.info("login response cookie: {}", header);
                 for (HeaderElement element: header.getElements()) {
                     if("UC00OOIIll11".equalsIgnoreCase(element.getName())) {
-                        logger.info("login response UC00OOIIll11: {}", element);
                         authenticationHolder.setUC00OOIIll11(element.getValue());
                         break;
                     }
                 }
             }
         }
-
-
-        logger.info("login response code: {}", httpResponseEntity.getCode());
-        logger.info("login response body: {}", new String(httpResponseEntity.getContent()));
     }
 
     public LoginProcess(String username, String password, URI uri) {

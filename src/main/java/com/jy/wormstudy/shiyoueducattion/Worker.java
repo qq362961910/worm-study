@@ -32,5 +32,9 @@ public class Worker {
         URI loginSuccessUri = URI.create("http://www.cupde.cn/web/loginSuccess.jsp");
         LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess(loginSuccessUri);
         loginSuccessProcess.process(authenticationHolder);
+
+        URI ssoLoginByUserCenterLoginUri = URI.create("http://www.cupde.cn/workspace/sso/center/ssoLoginByUserCenter_login.action");
+        SsoLoginByUserCenterLogin ssoLoginByUserCenterLogin = new SsoLoginByUserCenterLogin(ssoLoginByUserCenterLoginUri);
+        ssoLoginByUserCenterLogin.process(authenticationHolder);
     }
 }

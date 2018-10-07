@@ -14,5 +14,10 @@
 
 5.登陆成功(现在看来没用)
 提交: UC00OOIIll11和jsessionid;/workspace
+响应: jsessionid;/
+
+6.sso登陆
+提交: UC00OOIIll11和jsessionid;/
+响应: jsessionid;/workspace
 
 

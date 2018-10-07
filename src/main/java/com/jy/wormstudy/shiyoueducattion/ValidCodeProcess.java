@@ -51,7 +51,6 @@ public class ValidCodeProcess {
         String imagePath = FileUtil.saveToTempDir(response.body(), response.headers().firstValue("Content-Type").orElse("null"));
         logger.info("image path: {}", imagePath);
         authenticationHolder.setValidateCode(validCodeHelper.analyseImageCode(new File(imagePath)));
-        logger.info("auth: {}", authenticationHolder);
     }
 
     public ValidCodeProcess(ValidCodeHelper validCodeHelper, String url) {

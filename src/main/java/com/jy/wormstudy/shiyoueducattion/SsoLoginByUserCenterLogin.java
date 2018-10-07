@@ -4,8 +4,6 @@ import com.jy.util.http.HttpResponseEntity;
 import com.jy.util.http.RequestUtil;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,24 +12,23 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginCheckProcess {
+public class SsoLoginByUserCenterLogin {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginCheckProcess.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(SsoLoginByUserCenterLogin.class);
     private URI uri;
 
     public void process(AuthenticationHolder authenticationHolder) throws IOException {
 
         Map<String, String> headers = new HashMap<>();
         StringBuilder cookieBuilder = new StringBuilder();
-        cookieBuilder.append("JSESSIONID=").append(authenticationHolder.getCenterSessionId());
+        cookieBuilder.append("JSESSIONID=").append(authenticationHolder.getRootSessionId());
         cookieBuilder.append(",UC00OOIIll11=").append(authenticationHolder.getUC00OOIIll11());
         headers.put("Cookie", cookieBuilder.toString());
         HttpResponseEntity responseEntity = RequestUtil.get(uri.toString(), headers, null);
-        logger.info("login check response code: {}", responseEntity.getCode());
+        logger.info("login success response code: {}", responseEntity.getCode());
         for (Header header: responseEntity.getHeaders()) {
             if(header.getName().equalsIgnoreCase("Set-Cookie")) {
-                logger.info("login check response cookie: {}",header);
+                logger.info("sso login response cookie: {}", header);
                 for (HeaderElement element: header.getElements()) {
                     if("JSESSIONID".equalsIgnoreCase(element.getName())) {
                         authenticationHolder.setWorkspaceSessionId(element.getValue());
@@ -40,11 +37,10 @@ public class LoginCheckProcess {
                 }
             }
         }
-//        Document document = Jsoup.parse(new String(responseEntity.getContent()));
-//        document.body();
+
     }
 
-    public LoginCheckProcess(URI uri) {
+    public SsoLoginByUserCenterLogin(URI uri) {
         this.uri = uri;
     }
 }
