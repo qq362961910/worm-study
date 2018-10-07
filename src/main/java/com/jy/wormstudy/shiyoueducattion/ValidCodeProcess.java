@@ -34,11 +34,17 @@ public class ValidCodeProcess {
 
         //1.save jsessionid
         String cookieStr = response.headers().firstValue("set-cookie").orElse("");
-        String[] cookieStrs = cookieStr.split(";");
+        String[] cookieStrs = cookieStr.split(",");
         for(String str: cookieStrs) {
-            String[] entry = str.split("=");
-            if("JSESSIONID".equals(entry[0]) && entry.length > 1) {
-                authenticationHolder.setCenterSessionId(entry[1]);
+            String[] elements = str.trim().split(";");
+            if(elements[0].startsWith("JSESSIONID")) {
+                logger.info("load image response jsessionid: {}", str);
+                String[] entry = elements[0].split("=");
+                if(entry.length > 1) {
+                    authenticationHolder.setCenterSessionId(entry[1]);
+                } else {
+                    logger.error("no JSESSIONID found in load image response");
+                }
             }
         }
         //save image to tmp

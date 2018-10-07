@@ -22,7 +22,15 @@ public class Worker {
         loginProcess.login(authenticationHolder);
 
         URI indexUri = URI.create("http://www.cupde.cn/workspace/sso/center/ssoLoginByUserCenter_login.action");
-        IndexPageProcess indexPageProcess = new IndexPageProcess(indexUri);
-        indexPageProcess.process(authenticationHolder);
+        LoginCheckProcess loginCheckProcess = new LoginCheckProcess(indexUri);
+        loginCheckProcess.process(authenticationHolder);
+
+        URI centerLoginUri = URI.create("http://www.cupde.cn/sso/login_centerLogin.action");
+        CenterLoginProcess centerLoginProcess = new CenterLoginProcess(centerLoginUri);
+        centerLoginProcess.process(authenticationHolder);
+
+        URI loginSuccessUri = URI.create("http://www.cupde.cn/web/loginSuccess.jsp");
+        LoginSuccessProcess loginSuccessProcess = new LoginSuccessProcess(loginSuccessUri);
+        loginSuccessProcess.process(authenticationHolder);
     }
 }

@@ -50,6 +50,7 @@ public class LoginProcess {
             if(header.getName().equalsIgnoreCase("Set-Cookie")) {
                 for (HeaderElement element: header.getElements()) {
                     if("UC00OOIIll11".equalsIgnoreCase(element.getName())) {
+                        logger.info("login response UC00OOIIll11: {}", element);
                         authenticationHolder.setUC00OOIIll11(element.getValue());
                         break;
                     }
