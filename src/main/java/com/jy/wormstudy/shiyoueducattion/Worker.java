@@ -36,5 +36,11 @@ public class Worker {
         URI ssoLoginByUserCenterLoginUri = URI.create("http://www.cupde.cn/workspace/sso/center/ssoLoginByUserCenter_login.action");
         SsoLoginByUserCenterLogin ssoLoginByUserCenterLogin = new SsoLoginByUserCenterLogin(ssoLoginByUserCenterLoginUri);
         ssoLoginByUserCenterLogin.process(authenticationHolder);
+
+        URI userInfoProcessUri = URI.create("http://www.cupde.cn/entity/workspaceStudent/student_stuInfo.action");
+        UserInfoProcess userInfoProcess = new UserInfoProcess(userInfoProcessUri);
+        userInfoProcess.process(authenticationHolder);
+
+        System.out.println(authenticationHolder.getStudent());
     }
 }

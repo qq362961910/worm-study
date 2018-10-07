@@ -1,5 +1,7 @@
 package com.jy.wormstudy.shiyoueducattion;
 
+import com.jy.wormstudy.shiyoueducattion.entity.Student;
+
 public class AuthenticationHolder {
 
     private String rootSessionId;
@@ -13,6 +15,8 @@ public class AuthenticationHolder {
     private String validateCode;
 
     private String UC00OOIIll11;
+
+    private Student student;
 
     public String getRootSessionId() {
         return rootSessionId;
@@ -62,6 +66,14 @@ public class AuthenticationHolder {
         this.UC00OOIIll11 = UC00OOIIll11;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
         return "AuthenticationHolder{" +
@@ -71,6 +83,7 @@ public class AuthenticationHolder {
                 ", sessionId='" + sessionId + '\'' +
                 ", validateCode='" + validateCode + '\'' +
                 ", UC00OOIIll11='" + UC00OOIIll11 + '\'' +
+                ", student=" + student +
                 '}';
     }
 }

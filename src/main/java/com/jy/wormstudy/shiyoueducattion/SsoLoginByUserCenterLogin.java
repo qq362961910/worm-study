@@ -29,12 +29,13 @@ public class SsoLoginByUserCenterLogin {
         for (Header header: responseEntity.getHeaders()) {
             if(header.getName().equalsIgnoreCase("Set-Cookie")) {
                 logger.info("sso login response cookie: {}", header);
-                for (HeaderElement element: header.getElements()) {
-                    if("JSESSIONID".equalsIgnoreCase(element.getName())) {
-                        authenticationHolder.setWorkspaceSessionId(element.getValue());
-                        break;
-                    }
-                }
+                //下面这段话导致登录状态失效
+//                for (HeaderElement element: header.getElements()) {
+//                    if("JSESSIONID".equalsIgnoreCase(element.getName())) {
+//                        authenticationHolder.setWorkspaceSessionId(element.getValue());
+//                        break;
+//                    }
+//                }
             }
         }
 
